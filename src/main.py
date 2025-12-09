@@ -6,9 +6,11 @@ import hydra
 from omegaconf import DictConfig
 
 
+def is_frozen() -> bool:
+    return getattr(sys, "frozen", False) and hasattr(sys, "_MEIPASS")
+
 def get_config_path() -> str:
-    frozen = getattr(sys, "frozen", False) and hasattr(sys, "_MEIPASS")
-    bin_path = Path(sys.executable if frozen else __file__)
+    bin_path = Path(sys.executable if is_frozen() else __file__)
     return str(bin_path.parent.parent)
 
 
