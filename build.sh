@@ -3,9 +3,10 @@
 set -euxo pipefail
 
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
-DIST_DIR=${SCRIPT_DIR}/dist
 
 cd ${SCRIPT_DIR}
+
+rm -rf build/ dist/ *.spec
 
 poetry run pyinstaller \
     src/main.py \
