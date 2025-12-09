@@ -7,9 +7,9 @@ DIST_DIR=${SCRIPT_DIR}/dist
 
 cd ${SCRIPT_DIR}
 
-poetry run pyinstaller src/main.py \
+poetry run pyinstaller \
+    src/main.py \
     --name main \
+    --onefile \
     --clean \
     --noconfirm
-
-cp ${SCRIPT_DIR}/config.yaml ${DIST_DIR}/
